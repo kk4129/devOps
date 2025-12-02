@@ -1,16 +1,74 @@
 {% extends "layout/base.html" %}
 
 {% block title %}
-    flask-example
+    Flask CI/CD Dashboard
 {% endblock %}
 
 {% block content %}
-    <div class="intro">
-        <h2 class="text-center">ErriPuuk Phaniiiiiiiiiiiii</h2>
-        <p class="text-center">Your flask application is running successfully.<br>Feel free to check out following example functionalities:</p>
+
+<div class="container mt-5">
+
+    <!-- Project Title -->
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">🚀 Flask CI/CD Pipeline Demo</h1>
+        <p class="lead text-muted">Fully automated deployment using GitHub Actions, Docker & Render</p>
     </div>
-    <div class="buttons">
-        <a class="btn btn-primary" role="button" href="/hello/">Hello</a>
-        <a class="btn btn-primary" role="button" href="/primes/">Primes</a>
+
+    <!-- CI/CD Status Cards -->
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">GitHub Actions</h5>
+                    <p class="card-text">Automated build, test & deploy pipeline</p>
+                    <a href="https://github.com/{{your_github_username}}/{{your_repo}}" target="_blank" class="btn btn-dark btn-sm">
+                        View Pipeline
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Docker Image</h5>
+                    <p class="card-text">Containerized Flask app with auto versioning</p>
+                    <a href="https://hub.docker.com/r/{{your_dockerhub_username}}/flask-example-cicd" target="_blank" class="btn btn-primary btn-sm">
+                        View Docker Image
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Render Deployment</h5>
+                    <p class="card-text">Live auto-deployed service</p>
+                    <a href="https://your-render-url" target="_blank" class="btn btn-success btn-sm">
+                        Open App
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Example Functionalities -->
+    <div class="mt-5 text-center">
+        <h3>📌 Try Example API Endpoints</h3>
+        <p class="text-muted">These help you verify the working backend after CI/CD deployment</p>
+
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a class="btn btn-outline-primary px-4" href="/hello/">Say Hello</a>
+            <a class="btn btn-outline-primary px-4" href="/primes/">Generate Primes</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 text-center text-muted">
+        <small>Built with ❤️ using Flask, Docker, GitHub Actions & Render</small>
+    </footer>
+</div>
+
 {% endblock %}

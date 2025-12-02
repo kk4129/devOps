@@ -6,9 +6,10 @@ def test_index_route(app, client):
     res = client.get('/')
     assert res.status_code == 200
     html = res.get_data(as_text=True)
-    assert "<h2" in html
-    assert "flask" in html.lower()  # ensures page is loaded
 
+    # Check page contains expected structure
+    assert "<h1" in html or "<h2" in html
+    assert "flask" in html.lower()  # basic sanity check
 
 
 def test_json_route(app, client):
