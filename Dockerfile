@@ -4,7 +4,7 @@ COPY . .
 COPY requirements.txt requirements.txt
 RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
     && pip install -r requirements.txt \
-    && pip install -e . \
+    && pip install . \
     && apk del .build-deps
 ENV FLASK_APP=flaskr.app
 ENV FLASK_ENV=stage
