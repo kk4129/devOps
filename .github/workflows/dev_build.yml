@@ -21,7 +21,6 @@ jobs:
         pip install flake8
         pip install -r requirements.txt        
 
-    # REMOVE editable install
     - name: Install project
       run: |
         pip install .
@@ -42,13 +41,15 @@ jobs:
       with:
         python-version: '3.9'
 
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest
         pip install -r requirements.txt        
 
-    # REMOVE editable install
     - name: Install project
       run: |
         pip install .
