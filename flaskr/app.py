@@ -53,10 +53,12 @@ def hello_random():
 
 
 @app.route('/primes/')
-def primes():
+@app.route('/primes/<int:limit>')
+def primes(limit=None):
     try:
-        # Get limit from query parameter
-        limit = request.args.get("limit", 100, type=int)
+        # Get limit from either path parameter or query parameter
+        if limit is None:
+            limit = request.args.get("limit", 100, type=int)
         
         # Validate input
         if limit < 2:
@@ -80,7 +82,3 @@ def primes():
             limit=100,
             error="Please enter a valid positive number"
         )
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
