@@ -30,12 +30,14 @@ def hello_random():
 
 
 @app.route('/primes/')
-@app.route('/primes/<int:count>')
-def primes(count=None):
-    if count is None or count == 0:
-        return render_template("primes.html")
-    if count > 1000:
-        return "Please select a natural number lower or equal to 1000."
-    # Return prime.html with list of prime numbers
-    return render_template("primes.html", count=str(count),
-                           primes=str(pc.primes(count)))
+def primes():
+    limit = request.args.get("limit", 100)
+    limit = int(limit)
+
+    primes_list = [n for n in range(2, limit+1) if is_prime(n)]
+
+    return render_template(
+        "primes.html",
+        primes=primes_list,
+        limit=limit
+    )
